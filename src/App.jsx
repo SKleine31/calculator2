@@ -35,11 +35,11 @@ function App() {
       return;
     }
 
-    // Handle operator buttons (+, -, ×, ÷)
-    if (['+', '-', '×', '÷'].includes(label)) {
+    // Handle operator buttons (+, -, *, ÷)
+    if (['+', '-', '*', '÷'].includes(label)) {
       setPrevValue(parseFloat(display));
       setOperator(label);
-      setDisplay(label); // Shows only the pressed operator on screen
+      setDisplay(label); // Displays the pressed operator on screen
       setWaitingForNextValue(true);
       return;
     }
@@ -58,7 +58,7 @@ function App() {
         case '-':
           result = prevValue - currentValue;
           break;
-        case '×':
+        case '*':
           result = prevValue * currentValue;
           break;
         case '÷':
@@ -80,7 +80,11 @@ function App() {
       setDisplay(label);
       setWaitingForNextValue(false);
     } else {
-      setDisplay(display === '0' || display === 'Error' || display === 'Sean Aethan Kleine T. Nunag' ? label : display + label);
+      setDisplay(
+        display === '0' || display === 'Error' || display === 'Sean Aethan Kleine T. Nunag'
+          ? label
+          : display + label
+      );
     }
   };
 
@@ -107,7 +111,7 @@ function App() {
           <CalcButton buttonLabel="4" onClick={handleButtonClick} />
           <CalcButton buttonLabel="5" onClick={handleButtonClick} />
           <CalcButton buttonLabel="6" onClick={handleButtonClick} />
-          <CalcButton buttonLabel="×" className="btn-operator" onClick={handleButtonClick} />
+          <CalcButton buttonLabel="*" className="btn-operator" onClick={handleButtonClick} />
 
           <CalcButton buttonLabel="1" onClick={handleButtonClick} />
           <CalcButton buttonLabel="2" onClick={handleButtonClick} />
